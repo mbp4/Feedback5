@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SplashActivity: AppCompatActivity(){
