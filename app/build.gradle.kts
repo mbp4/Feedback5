@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.feedback5"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.feedback5"
