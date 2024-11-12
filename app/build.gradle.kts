@@ -59,7 +59,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    implementation ("com.google.android.material:material:1.7.0")
     implementation ("androidx.appcompat:appcompat:1.4.0")
     implementation ("com.google.android.material:material:1.7.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
