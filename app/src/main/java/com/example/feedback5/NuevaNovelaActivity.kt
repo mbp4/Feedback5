@@ -1,13 +1,20 @@
 package com.example.feedback5
 
+import android.app.DatePickerDialog
+import android.content.res.Resources
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import java.time.LocalDate
+import java.util.Calendar
 
 class NuevaNovelaActivity: AppCompatActivity() {
     private lateinit var btnGuardarNovela: Button
@@ -17,6 +24,7 @@ class NuevaNovelaActivity: AppCompatActivity() {
     private lateinit var editAño: EditText
     private lateinit var editSinopsis: EditText
     private val db: FirebaseFirestore = Firebase.firestore
+    private lateinit var fechaSeleccionada: LocalDate
     //creamos todas las variables necesarias para hacer la activity funcional
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +48,28 @@ class NuevaNovelaActivity: AppCompatActivity() {
             finish()
             //vuelve a la actividad inicial
         }
+
+        editAño.setOnClickListener {
+            val dialog = AlertDialog.Builder(this)
+            val numberPicker = NumberPicker(this)
+
+            val añoActual = Calendar.getInstance().get(Calendar.YEAR)
+            numberPicker.minValue = 1000
+            numberPicker.maxValue = añoActual + 100
+            numberPicker.value = añoActual
+
+            dialog.setTitle("Selecciona un año")
+            dialog.setView(numberPicker)
+
+            dialog.setPositiveButton("Aceptar") { _, _ ->
+                editAño.setText(numberPicker.value.toString())
+            }
+
+            dialog.setNegativeButton("Cancelar", null)
+            dialog.show()
+        }
+
+
 
     }
 
