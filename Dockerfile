@@ -21,3 +21,5 @@ EXPOSE 9999
 
 # Definir el comando para ejecutar Battery Historian
 CMD ["python3", "/opt/battery-historian/battery-historian", "--port", "9999"]
+
+RUN docker run -d -p 9999:9999 battery-historian

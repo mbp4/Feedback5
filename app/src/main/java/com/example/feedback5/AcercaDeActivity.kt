@@ -40,8 +40,11 @@ class AcercaDeActivity: AppCompatActivity(){
                 }
             }
         }).start()
+        }
 
          */
+
+
 
         var i = -1
         colorRunnable = object : Runnable {
