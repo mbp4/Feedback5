@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.snapshots
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btnAlta: Button
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var novelasAdapter: NovelasAdapter
     private var listadoNovelasF: MutableList<Novela> = mutableListOf()
     private val db: FirebaseFirestore = Firebase.firestore
+    private var obtenerNovelasListener: ListenerRegistration? = null
     //creamos todas las variables necesarias para hacer la activity funcional
 
     companion object {
@@ -101,7 +104,13 @@ class MainActivity : AppCompatActivity() {
     }
     //creamos una función que haga que la lista se actualice al volver a la actividad
 
+    override fun onDestroy() {
+        super.onDestroy()
+        obtenerNovelasListener?.remove()
+    }
+
     private fun mostrarNovelas() {
+        /*
         db.collection("dbNovelas")
             .get()
             .addOnSuccessListener { documentos ->
@@ -117,6 +126,30 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "Error al obtener las novelas de la base de datos", exception)
             }) //mandamos un error a la logcat y al usuario en el caso de que no se pueda obtener la lista de novelas de la base de datos
         //creamos un metodo que hace que muestre la lista de novelas de la base de datos y las añada a una lista de novelas para uqe se muestren en la principal
+
+
+         */
+
+        obtenerNovelasListener =
+        db.collection("dbNovelas")
+            .addSnapshotListener{
+                    snapshot, e ->
+                        if (e != null){
+                            Toast.makeText(this, "Error al obtener las novelas", Toast.LENGTH_SHORT).show()
+                            Log.w(TAG, "Error al obtener las novelas de la base de datos", e)
+                            return@addSnapshotListener
+                        }
+                        if (snapshot != null){
+                            listadoNovelasF.clear()
+                            for (documento in snapshot){
+                                val novela = documento.toObject(Novela::class.java)
+                                listadoNovelasF.add(novela)
+                            }
+                            prepararRecyclerView()
+                        }
+                return@addSnapshotListener
+
+            }
     }
 
     private fun prepararRecyclerView() {
