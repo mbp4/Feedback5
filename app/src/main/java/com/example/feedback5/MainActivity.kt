@@ -98,12 +98,15 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    /*
     override fun onResume() {
         super.onResume()
         mostrarNovelas()
     }
     //creamos una función que haga que la lista se actualice al volver a la actividad
 
+
+     */
     override fun onDestroy() {
         super.onDestroy()
         obtenerNovelasListener?.remove()
