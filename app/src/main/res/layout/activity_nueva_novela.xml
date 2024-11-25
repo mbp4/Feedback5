@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:hint="Año de publicación"
+            android:hint="Pulse dos veces para elegir el año"
             />
 
         <EditText
