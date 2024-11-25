@@ -50,6 +50,8 @@ class NuevaNovelaActivity: AppCompatActivity() {
             //vuelve a la actividad inicial
         }
 
+        editAño.inputType = InputType.TYPE_NULL
+
         editAño.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
             val numberPicker = NumberPicker(this)
@@ -69,7 +71,6 @@ class NuevaNovelaActivity: AppCompatActivity() {
             dialog.setNegativeButton("Cancelar", null)
             dialog.show()
         }
-
 
 
     }
