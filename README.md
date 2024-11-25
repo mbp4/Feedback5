@@ -38,6 +38,17 @@ Con los snapshots actualizamos la lista automáticamente sin necesidad de crear 
 
 ### Consumo de bateria
 
+Para el consumo de bateria se nos solicitaba hacer uso de Battery Historian, pero al intentar realizar las aplicaciones necesarias me doy cuenta de que el repositorio de google ya no esta en funcionamiento y su uso no es posible, por lo tanto se hace de manera manual. 
 
+Al inicio del txt, donde se ha guardado el historial de la bateria que se ha usado en un determinado momento y realizando algunas ejecuciones o pruebas dentro de la app, nos encontramos lo siguiente: 
 
+```
+ 0 (1) 100 status=not-charging health=good plug=none temp=250 volt=5000 charge=10 modemRailChargemAh=0 wifiRailChargemAh=0 +running +wake_lock +sensor +wifi_radio +screen data_conn=hspa phone_signal_strength=great brightness=medium +wifi wifi_signal_strength=4 wifi_suppl=completed +ble_scan
 
+```
+
+Con esto podemos llegar a la conclusión de que la bateria y su uso esta siendo bueno por lo tanto no se realiza ninguna mejora.
+
+## Mejoras adicionales
+
+En el momento de añadir una novela se ha añadido un dialog en el que se puede elegir un número para el año de publicación de la novela.
