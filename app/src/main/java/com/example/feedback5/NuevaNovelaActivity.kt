@@ -51,28 +51,32 @@ class NuevaNovelaActivity: AppCompatActivity() {
         }
 
         editAño.inputType = InputType.TYPE_NULL
+        editAño.isFocusable = false
 
         editAño.setOnClickListener {
-            val dialog = AlertDialog.Builder(this)
-            val numberPicker = NumberPicker(this)
-
-            val añoActual = Calendar.getInstance().get(Calendar.YEAR)
-            numberPicker.minValue = 1000
-            numberPicker.maxValue = añoActual + 100
-            numberPicker.value = añoActual
-
-            dialog.setTitle("Selecciona un año")
-            dialog.setView(numberPicker)
-
-            dialog.setPositiveButton("Aceptar") { _, _ ->
-                editAño.setText(numberPicker.value.toString())
-            }
-
-            dialog.setNegativeButton("Cancelar", null)
-            dialog.show()
+            mostrarCalendario()
         }
 
+    }
 
+    fun mostrarCalendario() {
+        val dialog = AlertDialog.Builder(this)
+        val numberPicker = NumberPicker(this)
+
+        val añoActual = Calendar.getInstance().get(Calendar.YEAR)
+        numberPicker.minValue = 1000
+        numberPicker.maxValue = añoActual + 100
+        numberPicker.value = añoActual
+
+        dialog.setTitle("Selecciona un año")
+        dialog.setView(numberPicker)
+
+        dialog.setPositiveButton("Aceptar") { _, _ ->
+            editAño.setText(numberPicker.value.toString())
+        }
+
+        dialog.setNegativeButton("Cancelar", null)
+        dialog.show()
     }
 
     fun guardarNovela(){
