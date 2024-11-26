@@ -16,7 +16,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.snapshots
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btnAlta: Button
